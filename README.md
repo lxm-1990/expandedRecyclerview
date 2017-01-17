@@ -3,3 +3,6 @@
 
 
 第二步：使用数据库保存数据,决定用LitePal，LitePal是一款开源的数据库框架，采用了对象关系映射(ORM)的模式，并将我们平时开发最常用的一些功能进行了封装，再也不用为不懂sql语句而烦恼了。
+
+
+第三步: 为数据库初始化一些数据并且展示出来,expandedRecyclerView引用了一个第三方,git地址:https://github.com/h6ah4i/android-advancedrecyclerview,  里面有很多有关recyclerview的高级操作，可以参考。
