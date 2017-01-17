@@ -1,10 +1,12 @@
-package com.android.expandedrecyclerview;
+package com.android.expandedrecyclerview.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
+
+import com.android.expandedrecyclerview.BlankFragment;
 
 import java.util.List;
 
