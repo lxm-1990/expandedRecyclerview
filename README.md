@@ -6,3 +6,6 @@
 
 
 第三步: 为数据库初始化一些数据并且展示出来,expandedRecyclerView引用了一个第三方,git地址:https://github.com/h6ah4i/android-advancedrecyclerview,  里面有很多有关recyclerview的高级操作，可以参考。
+
+
+第四步:添加一个抽屉效果，打开抽屉可以添加数据
