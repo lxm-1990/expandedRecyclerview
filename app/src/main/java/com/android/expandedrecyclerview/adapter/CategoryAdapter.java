@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.android.expandedrecyclerview.R;
 import com.android.expandedrecyclerview.db.Album;
 import com.android.expandedrecyclerview.db.Resources;
+import com.android.expandedrecyclerview.widget.ExpandableItemIndicator;
+import com.h6ah4i.android.widget.advrecyclerview.expandable.ExpandableItemConstants;
 import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractExpandableItemAdapter;
 import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractExpandableItemViewHolder;
 
@@ -20,6 +22,9 @@ import java.util.List;
 
 public class CategoryAdapter extends AbstractExpandableItemAdapter<CategoryAdapter.MyGroupViewHolder,CategoryAdapter.MyChildViewHolder>{
 
+    private interface Expandable extends ExpandableItemConstants {
+    }
+
     private List<Pair<Album,List<Resources>>> mdata;
 
     public CategoryAdapter(List<Pair<Album, List<Resources>>> mdata) {
@@ -30,9 +35,11 @@ public class CategoryAdapter extends AbstractExpandableItemAdapter<CategoryAdapt
     class MyGroupViewHolder extends AbstractExpandableItemViewHolder{
 
         TextView textView;
+        public ExpandableItemIndicator mIndicator;
         public MyGroupViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.album_name);
+            mIndicator = (ExpandableItemIndicator) itemView.findViewById(R.id.Indicator);
         }
     }
 
@@ -81,6 +88,21 @@ public class CategoryAdapter extends AbstractExpandableItemAdapter<CategoryAdapt
     @Override
     public void onBindGroupViewHolder(MyGroupViewHolder holder, int groupPosition,int viewType) {
         holder.textView.setText(mdata.get(groupPosition).first.getName());
+
+        final int expandState = holder.getExpandStateFlags();
+
+        if ((expandState & ExpandableItemConstants.STATE_FLAG_IS_UPDATED) != 0) {
+
+            boolean animateIndicator = ((expandState & Expandable.STATE_FLAG_HAS_EXPANDED_STATE_CHANGED) != 0);
+
+            boolean isExpanded;
+            if ((expandState & Expandable.STATE_FLAG_IS_EXPANDED) != 0) {
+                isExpanded = true;
+            } else {
+                isExpanded = false;
+            }
+            holder.mIndicator.setExpandedState(isExpanded, animateIndicator);
+        }
     }
 
     @Override
