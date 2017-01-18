@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:baselineAligned="false"
-    android:background="@android:color/darker_gray">
+    android:background="#ddd">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="name"
         android:layout_centerInParent="true"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
         android:id="@+id/album_name"/>
 </RelativeLayout>

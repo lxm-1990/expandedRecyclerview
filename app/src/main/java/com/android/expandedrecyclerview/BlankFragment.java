@@ -126,7 +126,7 @@ public class BlankFragment extends Fragment implements RecyclerViewExpandableIte
     }
 
     //从数据库取出数据
-    void refreshData(){
+    public void refreshData(){
         mdata.clear();
         List<Album> albumList = DataSupport.where("categoryId=?",String.valueOf(category)).find(Album.class);
         for (int i = 0; i < albumList.size(); ++i ){
@@ -134,6 +134,8 @@ public class BlankFragment extends Fragment implements RecyclerViewExpandableIte
             List<Resources> resourcesList = DataSupport.where("albumId = ?",String.valueOf(album.getId())).find(Resources.class);
             mdata.add(new Pair<Album, List<Resources>>(album,resourcesList));
         }
+        if (myItemAdapter != null) {
         myItemAdapter.notifyDataSetChanged();
+        }
     }
 }
